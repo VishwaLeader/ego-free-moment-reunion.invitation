@@ -196,90 +196,6 @@
             background-color: #ecf0f1;
         }
 
-        .image-gallery {
-            margin-top: 20px;
-        }
-
-        .image-gallery h2 {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .image-gallery .slider {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .image-gallery .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .image-gallery .slide.active {
-            opacity: 1;
-        }
-
-        .image-gallery .navigation {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .image-gallery .navigation button {
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            margin: 0 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .image-gallery .navigation button:hover {
-            background-color: #2980b9;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .quantity-selector label {
-            font-size: 1.1em;
-            margin-right: 10px;
-        }
-
-        .quantity-selector input {
-            width: 50px;
-            padding: 5px;
-            text-align: center;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
         .payment-option a {
             display: inline-block;
             background-color: #3498db;
@@ -308,6 +224,69 @@
 
         .map-link a:hover {
             background-color: #2980b9;
+        }
+
+        .quantity-selector label {
+            font-size: 1.1em;
+            margin-right: 10px;
+        }
+
+        .quantity-selector input {
+            width: 50px;
+            padding: 5px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .image-gallery {
+            margin-top: 20px;
+        }
+
+        .image-gallery h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .image-gallery .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-gallery .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-gallery .slide.active {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
     </style>
 </head>
@@ -362,36 +341,32 @@
             <h2 class="text-center text-2xl font-semibold mb-4">Event Highlights</h2>
             <div class="slider">
                 <div class="slide active">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 1">
+                    <img src="images/image1.jpg" alt="Event Image 1">
                 </div>
                 <div class="slide">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 2">
+                    <img src="images/image2.jpg" alt="Event Image 2">
                 </div>
                 <div class="slide">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 3">
+                    <img src="images/image3.jpg" alt="Event Image 3">
                 </div>
                 <div class="slide">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 4">
+                    <img src="images/image4.jpg" alt="Event Image 4">
                 </div>
                 <div class="slide">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 5">
+                    <img src="images/image5.jpg" alt="Event Image 5">
                 </div>
                 <div class="slide">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 6">
+                    <img src="images/image6.jpg" alt="Event Image 6">
                 </div>
                 <div class="slide">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 7">
+                    <img src="images/image7.jpg" alt="Event Image 7">
                 </div>
                 <div class="slide">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 8">
+                    <img src="images/image8.jpg" alt="Event Image 8">
                 </div>
                 <div class="slide">
-                    <img src="https://via.placeholder.com/150" alt="Event Image 9">
+                    <img src="images/image9.jpg" alt="Event Image 9">
                 </div>
-            </div>
-            <div class="navigation">
-                <button id="prevSlide">Previous</button>
-                <button id="nextSlide">Next</button>
             </div>
         </div>
 
@@ -466,10 +441,6 @@
 
         // Initial setup to show the first image
         showSlide(currentIndex);
-
-        // Add event listeners for navigation buttons
-        document.getElementById('nextSlide').addEventListener('click', nextSlide);
-        document.getElementById('prevSlide').addEventListener('click', prevSlide);
     </script>
 </body>
 </html>
