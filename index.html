@@ -192,8 +192,9 @@
             background-color: #3498db;
         }
 
-        .dark-mode .dark-mode-toggle .slider {
-            background-color: #ecf0f1;
+        .payment-option {
+            margin-top: 20px;
+            text-align: center;
         }
 
         .payment-option a {
@@ -211,6 +212,11 @@
             background-color: #2980b9;
         }
 
+        .map-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
         .map-link a {
             display: inline-block;
             background-color: #3498db;
@@ -224,6 +230,11 @@
 
         .map-link a:hover {
             background-color: #2980b9;
+        }
+
+        .quantity-selector {
+            margin-top: 20px;
+            text-align: center;
         }
 
         .quantity-selector label {
@@ -249,24 +260,26 @@
             margin-bottom: 20px;
         }
 
-        .image-gallery .slider {
-            position: relative;
-            max-width: 100%;
+        .image-gallery .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .image-gallery .grid div {
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
         }
 
-        .image-gallery .slide {
-            position: absolute;
+        .image-gallery .grid div:hover {
+            transform: scale(1.05);
+        }
+
+        .image-gallery .grid img {
             width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .image-gallery .slide.active {
-            opacity: 1;
+            height: auto;
         }
 
         @keyframes fadeIn {
@@ -308,8 +321,8 @@
         <div class="event-details">
             <h2>Event Overview</h2>
             <p><strong>Date:</strong> December 14th, 2024</p>
-            <p><strong>Time:</strong> 7:00 p.m. - 10:00 p.m.</p>
-            <p><strong>Venue:</strong> 20 Downtown, 2nd floor, Cambata Building/ Eros Cinema Building, Above CCD 125, Jamshedji Tata Road, Station, opposite Churchgate, Churchgate, Mumbai, Maharashtra 400020</p>
+            <p><strong>Time:</strong> 6:00 p.m. - 9:00 p.m.</p>
+            <p><strong>Venue:</strong> 2nd floor, Cambata Building/ Eros Cinema Building, Above CCD 125, Jamshedji Tata Road, Station, opposite Churchgate, Churchgate, Mumbai, Maharashtra 400020</p>
             <p><strong>Contribution:</strong> Rs. 2000/- per person (includes dinner)</p>
         </div>
 
@@ -339,33 +352,15 @@
 
         <div class="image-gallery">
             <h2 class="text-center text-2xl font-semibold mb-4">Event Highlights</h2>
-            <div class="slider">
-                <div class="slide active">
-                    <img src="images/image1.jpg" alt="Event Image 1">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3) gap-4">
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Event Image 1" class="w-full h-auto">
                 </div>
-                <div class="slide">
-                    <img src="images/image2.jpg" alt="Event Image 2">
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Event Image 2" class="w-full h-auto">
                 </div>
-                <div class="slide">
-                    <img src="images/image3.jpg" alt="Event Image 3">
-                </div>
-                <div class="slide">
-                    <img src="images/image4.jpg" alt="Event Image 4">
-                </div>
-                <div class="slide">
-                    <img src="images/image5.jpg" alt="Event Image 5">
-                </div>
-                <div class="slide">
-                    <img src="images/image6.jpg" alt="Event Image 6">
-                </div>
-                <div class="slide">
-                    <img src="images/image7.jpg" alt="Event Image 7">
-                </div>
-                <div class="slide">
-                    <img src="images/image8.jpg" alt="Event Image 8">
-                </div>
-                <div class="slide">
-                    <img src="images/image9.jpg" alt="Event Image 9">
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="Event Image 3" class="w-full h-auto">
                 </div>
             </div>
         </div>
@@ -386,7 +381,7 @@
         </div>
 
         <div class="footer">
-            <p>&copy; powered by VISHWA LEADER DIGITAL MEDIA </p>
+            <p>&copy; 2024 Ego-Free Movement. All rights reserved.</p>
         </div>
     </div>
 
@@ -405,42 +400,6 @@
 
         // Initialize the payment link with the default quantity
         updatePaymentLink();
-
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            if (index >= totalSlides) {
-                currentIndex = 0;
-            } else if (index < 0) {
-                currentIndex = totalSlides - 1;
-            }
-
-            // Hide all slides
-            slides.forEach(slide => {
-                slide.classList.remove('active');
-            });
-
-            // Show the current slide
-            slides[currentIndex].classList.add('active');
-        }
-
-        function nextSlide() {
-            currentIndex++;
-            showSlide(currentIndex);
-        }
-
-        function prevSlide() {
-            currentIndex--;
-            showSlide(currentIndex);
-        }
-
-        // Automatic slide change every 3 seconds
-        setInterval(nextSlide, 3000);
-
-        // Initial setup to show the first image
-        showSlide(currentIndex);
     </script>
 </body>
 </html>
