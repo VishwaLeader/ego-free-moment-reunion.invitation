@@ -268,31 +268,6 @@
             opacity: 1;
         }
 
-        .image-gallery .prev, .image-gallery .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #fff;
-            font-size: 2em;
-            padding: 10px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            transition: background-color 0.3s;
-        }
-
-        .image-gallery .prev {
-            left: 10px;
-        }
-
-        .image-gallery .next {
-            right: 10px;
-        }
-
-        .image-gallery .prev:hover, .image-gallery .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -391,8 +366,6 @@
                 <div class="slide">
                     <img src="images/image9.jpg" alt="Event Image 9">
                 </div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>                
             </div>
         </div>
 
@@ -432,28 +405,39 @@
         // Initialize the payment link with the default quantity
         updatePaymentLink();
 
-        let slideIndex = 1;
-        showSlides(slideIndex);
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("slide");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].classList.remove("active");
+        function showSlide(index) {
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
             }
-            slides[slideIndex - 1].classList.add("active");
+
+            // Remove active class from all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            // Add active class to the current slide
+            slides[currentIndex].classList.add('active');
         }
 
-        // Auto slide every 3 seconds
-        setInterval(function() {
-            plusSlides(1);
-        }, 3000);
+        function nextSlide() {
+            currentIndex++;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex--;
+            showSlide(currentIndex);
+        }
+
+        // Automatic slide change every 3 seconds
+        setInterval(nextSlide, 3000);
+
+        // Initialize the first slide
+        showSlide(currentIndex);
     </script>
 </body>
 </html>
